@@ -631,16 +631,6 @@ body {
 
     }
 
-    .menu-btn {
-
-    display: block;
-
-    position: relative;
-
-    z-index: 10;
-
-}
-
 .nav-links {
 
     display:none;
@@ -861,27 +851,39 @@ body {
 }
 
 
+/* Desktop */
+
 .menu-btn {
 
-    display: block !important;
-
-    background: #050505;
-
-    color: #00ffff;
-
-    border: 2px solid #00ffff;
-
-    font-size: 30px;
-
-    padding: 5px 15px;
-
-    border-radius: 10px;
-
-    cursor: pointer;
+    display:none;
 
 }
 
+
+/* Mobile */
+
 @media (max-width:768px){
+
+    .menu-btn {
+
+        display:block;
+
+        background:transparent;
+
+        color:#00ffff;
+
+        border:2px solid #00ffff;
+
+        font-size:25px;
+
+        padding:8px 12px;
+
+        border-radius:10px;
+
+        cursor:pointer;
+
+    }
+
 
     .nav-links {
 
