@@ -38,3 +38,20 @@ Nexora is a modern productivity platform that combines tasks, notes, goals, lear
 **Sujal Shindolkar**
 
 Built with ❤️ while learning Full Stack Development.
+
+# 🚀 Nexora
+
+AI Powered Life Operating System
+
+🌐 Live Demo:
+Coming Soon
+
+## Preview
+
+Screenshot here
+
+## Built With
+
+HTML
+CSS
+JavaScript
