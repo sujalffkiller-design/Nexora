@@ -7,4 +7,15 @@ themeButton.addEventListener("click", () => {
 
     body.classList.toggle("light-mode");
 
+
+    if(body.classList.contains("light-mode")) {
+
+        themeButton.textContent = "☀️";
+
+    } else {
+
+        themeButton.textContent = "🌙";
+
+    }
+
 });
