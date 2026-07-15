@@ -921,6 +921,20 @@ body {
 
     }
 
+    .feature-container {
+
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+
+}
+
+.feature-card {
+
+    width: 100%;
+
+}
+
 }
 
 .menu-btn.active span:nth-child(1) {
@@ -933,4 +947,44 @@ body {
 
 .menu-btn.active span:nth-child(3) {
     transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Tablets */
+@media (max-width:1024px){
+
+    .feature-container{
+
+        grid-template-columns: repeat(2,1fr);
+
+    }
+
+}
+
+/* Phones */
+@media (max-width:768px){
+
+    .feature-container{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+.features {
+
+    opacity: 0;
+
+    transform: translateY(60px);
+
+    transition: all 0.8s ease;
+
+}
+
+.features.show {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
 }

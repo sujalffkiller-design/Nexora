@@ -27,3 +27,21 @@ menuButton.addEventListener("click", () => {
     navLinks.classList.toggle("active");
     menuButton.classList.toggle("active");
 });
+
+const features = document.querySelector(".features");
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach((entry) => {
+
+        if (entry.isIntersecting) {
+
+            entry.target.classList.add("show");
+
+        }
+
+    });
+
+});
+
+observer.observe(features);
