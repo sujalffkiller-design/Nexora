@@ -45,3 +45,25 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 observer.observe(features);
+
+const cards = document.querySelectorAll(".feature-card");
+
+const cardObserver = new IntersectionObserver((entries) => {
+
+    entries.forEach((entry) => {
+
+        if (entry.isIntersecting) {
+
+            entry.target.classList.add("show");
+
+        }
+
+    });
+
+});
+
+cards.forEach((card) => {
+
+    cardObserver.observe(card);
+
+});
