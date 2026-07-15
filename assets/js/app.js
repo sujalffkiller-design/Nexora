@@ -21,12 +21,9 @@ themeButton.addEventListener("click", () => {
 });
 
 const menuButton = document.querySelector(".menu-btn");
-
 const navLinks = document.querySelector(".nav-links");
 
-
 menuButton.addEventListener("click", () => {
-
     navLinks.classList.toggle("active");
-
+    menuButton.classList.toggle("active");
 });
