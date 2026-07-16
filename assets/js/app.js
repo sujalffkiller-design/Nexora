@@ -1,24 +1,25 @@
-const themeButton = document.querySelector(".theme-btn");
+const themeBtn = document.querySelector(".theme-btn");
 
 const body = document.body;
 
-
-themeButton.addEventListener("click", () => {
+themeBtn.addEventListener("click",()=>{
 
     body.classList.toggle("light-mode");
 
+    if(body.classList.contains("light-mode")){
 
-    if(body.classList.contains("light-mode")) {
+        themeBtn.textContent="☀️";
 
-        themeButton.textContent = "☀️";
+    }
 
-    } else {
+    else{
 
-        themeButton.textContent = "🌙";
+        themeBtn.textContent="🌙";
 
     }
 
 });
+
 
 const menuButton = document.querySelector(".menu-btn");
 const navLinks = document.querySelector(".nav-links");
@@ -65,5 +66,52 @@ const cardObserver = new IntersectionObserver((entries) => {
 cards.forEach((card) => {
 
     cardObserver.observe(card);
+
+});
+
+const counters = document.querySelectorAll(".counter");
+
+const counterObserver = new IntersectionObserver((entries) => {
+
+    entries.forEach((entry) => {
+
+        if (entry.isIntersecting) {
+
+            const counter = entry.target;
+            const target = +counter.dataset.target;
+
+            let count = 0;
+            const speed = target / 100;
+
+            const updateCounter = () => {
+
+                if (count < target) {
+
+                    count += speed;
+                    counter.textContent = Math.ceil(count);
+
+                    requestAnimationFrame(updateCounter);
+
+                } else {
+
+                    counter.textContent = target;
+
+                }
+
+            };
+
+            updateCounter();
+
+            counterObserver.unobserve(counter);
+
+        }
+
+    });
+
+});
+
+counters.forEach((counter) => {
+
+    counterObserver.observe(counter);
 
 });
