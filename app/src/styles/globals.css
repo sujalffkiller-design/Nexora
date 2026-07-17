@@ -648,3 +648,19 @@ body{
 .note-input button {
     width: 100%;
 }
+
+.note-card {
+    background: #2a2a2a;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.note-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+.note-actions button {
+    flex: 1;
+}
