@@ -736,3 +736,62 @@ body{
     border-radius:10px;
     cursor:pointer;
 }
+
+.goal-card{
+    background:#1b1b1b;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;
+    padding:22px;
+    margin-top:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+.goal-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.goal-header h3{
+    margin:0;
+    font-size:22px;
+}
+
+.goal-status{
+    display:inline-block;
+    margin-top:6px;
+    color:#9ca3af;
+    font-size:14px;
+}
+
+.goal-steps{
+    margin-top:20px;
+}
+
+.goal-steps p{
+    margin:12px 0;
+    font-size:16px;
+}
+
+.step-input{
+    display:flex;
+    gap:12px;
+    margin-top:18px;
+}
+
+.step-input input{
+    flex:1;
+}
+
+.goal-step{
+    display:flex;
+    align-items:center;
+    padding:10px 0;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.goal-step:hover{
+    opacity:.8;
+}

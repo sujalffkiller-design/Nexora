@@ -1,143 +1,119 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import GoalForm from "./GoalForm";
+import GoalCard from "./GoalCard";
 
 function Goals() {
 
-    const [goals, setGoals] = useState([
-        {
-            id: 1,
-            title: "Welcome to Nexora",
-            description: "Create your first goal and start tracking your progress.",
-            progress: 100,
-            steps: []
-        }
-    ]);
+    const [goals, setGoals] = useState(() => {
 
-    const [title, setTitle] = useState("");
+        const savedGoals = localStorage.getItem("nexoraGoals");
 
-    const addGoal = () => {
+        return savedGoals ? JSON.parse(savedGoals) : [];
+
+    });
+
+    useEffect(() => {
+
+        localStorage.setItem(
+            "nexoraGoals",
+            JSON.stringify(goals)
+        );
+
+    }, [goals]);
+
+    const addGoal = (title) => {
 
         if (title.trim() === "") return;
 
-        setGoals([
-            {
-                id: Date.now(),
-                title,
-                description: "",
-                progress: 0,
-                steps: []
-            },
-            ...goals
-        ]);
+        const newGoal = {
+            id: Date.now(),
+            title,
+            status: "In Progress",
+            steps: []
+        };
 
-        setTitle("");
+        setGoals([newGoal, ...goals]);
 
     };
 
-    const increaseProgress = (id) => {
+    const addStep = (goalId, stepText) => {
 
-        setGoals(
+    if (stepText.trim() === "") return;
 
-            goals.map(goal =>
+    setGoals(
 
-                goal.id === id
-                    ? {
-                        ...goal,
-                        progress: Math.min(goal.progress + 10, 100)
-                    }
-                    : goal
+        goals.map(goal =>
 
-            )
+            goal.id === goalId
+                ? {
+                    ...goal,
+                    steps: [
+                        ...goal.steps,
+                        {
+                            id: Date.now(),
+                            text: stepText,
+                            completed: false
+                        }
+                    ]
+                }
+                : goal
 
-        );
-
-    };
-
-    const decreaseProgress = (id) => {
-
-        setGoals(
-
-            goals.map(goal =>
-
-                goal.id === id
-                    ? {
-                        ...goal,
-                        progress: Math.max(goal.progress - 10, 0)
-                    }
-                    : goal
-
-            )
-
-        );
-
-    };
-
-    return (
-
-        <div className="goals-widget">
-
-            <h2>🎯 Goals</h2>
-
-            <div className="goal-input">
-
-                <input
-                    type="text"
-                    placeholder="Enter goal..."
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                />
-
-                <button onClick={addGoal}>
-                    ➕ Add Goal
-                </button>
-
-            </div>
-
-            {goals.map(goal => (
-
-                <div
-                    key={goal.id}
-                    className="goal-card"
-                >
-
-                    <h3>{goal.title}</h3>
-
-                    <p>{goal.description}</p>
-
-                    {goal.id !== 1 && (
-                        <>
-                            <p>{goal.progress}% Complete</p>
-
-                            <div className="progress-bar">
-
-                                <div
-                                    className="progress-fill"
-                                    style={{ width: `${goal.progress}%` }}
-                                ></div>
-
-                            </div>
-
-                            <div className="goal-actions">
-
-                                <button onClick={() => decreaseProgress(goal.id)}>
-                                    ➖
-                                </button>
-
-                                <button onClick={() => increaseProgress(goal.id)}>
-                                    ➕
-                                </button>
-
-                            </div>
-
-                        </>
-                    )}
-
-                </div>
-
-            ))}
-
-        </div>
+        )
 
     );
+
+};
+
+const toggleStep = (goalId, stepId) => {
+
+    setGoals(
+
+        goals.map(goal =>
+
+            goal.id === goalId
+                ? {
+                    ...goal,
+                    steps: goal.steps.map(step =>
+
+                        step.id === stepId
+                            ? {
+                                ...step,
+                                completed: !step.completed
+                            }
+                            : step
+
+                    )
+                }
+                : goal
+
+        )
+
+    );
+
+};
+
+   return (
+
+    <div className="goals-widget">
+
+        <h2>🎯 Goals</h2>
+
+        <GoalForm addGoal={addGoal} />
+
+        {goals.map(goal => (
+
+            <GoalCard
+    key={goal.id}
+    goal={goal}
+    addStep={addStep}
+    toggleStep={toggleStep}
+/>
+
+        ))}
+
+    </div>
+
+);
 
 }
 
