@@ -5,6 +5,7 @@ import AIWidget from "../components/AIWidget";
 import RecentActivity from "../components/RecentActivity";
 import TaskManager from "../components/TaskManager";
 import Notes from "../components/Notes";
+import Goals from "../components/Goals";
 
 
 
@@ -59,6 +60,8 @@ function Dashboard({
                 <AIWidget />
 
                 <RecentActivity />
+
+                <Goals />
 
                
 
