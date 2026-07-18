@@ -1,4 +1,5 @@
 import { useState } from "react";
+import GoalProgress from "./GoalProgress";
 
 function GoalCard({ goal, addStep, toggleStep }) {
 
@@ -14,6 +15,16 @@ function GoalCard({ goal, addStep, toggleStep }) {
 
     };
 
+    const totalSteps = goal.steps.length;
+
+const completedSteps = goal.steps.filter(
+    step => step.completed
+).length;
+
+const completed =
+    totalSteps > 0 &&
+    completedSteps === totalSteps;
+
     return (
 
         <div className="goal-card">
@@ -25,10 +36,10 @@ function GoalCard({ goal, addStep, toggleStep }) {
                     <h3>🎯 {goal.title}</h3>
 
                     <span className="goal-status">
-                        {goal.status === "Completed"
-                            ? "🟢 Completed"
-                            : "🟡 In Progress"}
-                    </span>
+    {completed
+        ? "🟢 Completed"
+        : "🟡 In Progress"}
+</span>
 
                 </div>
 
@@ -69,8 +80,7 @@ function GoalCard({ goal, addStep, toggleStep }) {
                                 textDecoration: step.completed
                                     ? "line-through"
                                     : "none",
-                                opacity: step.completed ? 0.6 : 1,
-                                cursor: "pointer"
+                                opacity: step.completed ? 0.6 : 1
                             }}
                         >
                             {step.text}
@@ -81,6 +91,8 @@ function GoalCard({ goal, addStep, toggleStep }) {
                 ))}
 
             </div>
+
+            <GoalProgress steps={goal.steps} />
 
         </div>
 
