@@ -1210,3 +1210,21 @@ body{
     transform:scale(1.05);
 
 }
+
+.event-details h4{
+
+    margin:0;
+
+    font-size:16px;
+
+}
+
+.event-details p{
+
+    margin-top:6px;
+
+    color:#9ca3af;
+
+    font-size:14px;
+
+}

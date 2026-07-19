@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
 
+import EventCard from "./EventCard";
+
 function Calendar() {
 
     const [selectedDay, setSelectedDay] = useState(null);
     const [eventTitle, setEventTitle] = useState("");
+
+     const [eventTime, setEventTime] = useState("");
 
     const [events, setEvents] = useState(() => {
         const savedEvents = localStorage.getItem("nexoraCalendarEvents");
@@ -67,12 +71,15 @@ function Calendar() {
         setEvents([
             ...events,
             {
-                date: selectedDate,
-                title: eventTitle
-            }
+    date: selectedDate,
+    title: eventTitle,
+    time: eventTime
+}
         ]);
 
         setEventTitle("");
+
+        setEventTime("");
 
     };
 
@@ -193,25 +200,15 @@ function Calendar() {
                         })
                         .map((event, index) => (
 
-                           <div
-    key={index}
-    className="event-item"
->
+    <EventCard
+        key={index}
+        event={event}
+        onDelete={deleteEvent}
+    />
 
-    <span>
-        📌 {event.title}
-    </span>
+))
 
-    <button
-        className="delete-event-btn"
-        onClick={() => deleteEvent(event.date, event.title)}
-    >
-        🗑
-    </button>
-
-</div>
-
-                        ))
+                        
                 }
 
             </div>
@@ -230,6 +227,14 @@ function Calendar() {
                         value={eventTitle}
                         onChange={(e) =>
                             setEventTitle(e.target.value)
+                        }
+                    />
+
+                    <input
+                        type="time"
+                        value={eventTime}
+                        onChange={(e) =>
+                            setEventTime(e.target.value)
                         }
                     />
 
