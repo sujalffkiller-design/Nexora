@@ -1,4 +1,4 @@
-function DashboardCard({ title, value }) {
+function DashboardCard({ title, value, subtitle }) {
 
     return (
 
@@ -6,7 +6,9 @@ function DashboardCard({ title, value }) {
 
             <h3>{title}</h3>
 
-            <p>{value}</p>
+            <h1>{value}</h1>
+
+            <p>{subtitle}</p>
 
         </div>
 

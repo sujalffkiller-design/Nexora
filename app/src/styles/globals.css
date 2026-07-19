@@ -197,26 +197,30 @@ body{
 }
 
 .dashboard-card{
-
-    background:#111827;
+    background: rgba(17,24,39,.85);
+    backdrop-filter: blur(12px);
 
     border:1px solid rgba(255,255,255,.08);
 
-    border-radius:18px;
+    border-radius:20px;
 
-    padding:30px;
+    padding:28px;
 
-    transition:.3s;
+    box-shadow:0 12px 30px rgba(0,0,0,.30);
 
+    transition:all .3s ease;
 }
 
 .dashboard-card:hover{
 
     transform:translateY(-6px);
 
-    border-color:var(--primary);
+    box-shadow:0 20px 40px rgba(0,0,0,.45);
+
+    border-color:#6366f1;
 
 }
+
 
 .dashboard-card h3{
 
@@ -656,16 +660,31 @@ body{
 }
 
 .note-card{
-    background:#2b2b3d;
-    padding:18px;
-    border-radius:12px;
-    margin-top:15px;
-    transition:.3s;
+
+    background:rgba(43,43,61,.85);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:20px;
+
+    padding:24px;
+
+    margin-top:22px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.30);
+
+    transition:all .3s ease;
+
 }
 
 .note-card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 8px 18px rgba(0,0,0,.3);
+
+    transform:translateY(-5px);
+
+    border-color:#3b82f6;
+
 }
 
 .note-actions{
@@ -686,12 +705,6 @@ body{
     border:1px solid rgba(255,255,255,.08);
 }
 
-.goal-card{
-    background:#2b2b3d;
-    padding:18px;
-    border-radius:12px;
-    margin-top:15px;
-}
 
 .progress-bar {
     width: 100%;
@@ -738,12 +751,31 @@ body{
 }
 
 .goal-card{
-    background:#1b1b1b;
+
+    background:rgba(43,43,61,.85);
+
+    backdrop-filter:blur(12px);
+
     border:1px solid rgba(255,255,255,.08);
-    border-radius:18px;
-    padding:22px;
-    margin-top:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,.25);
+
+    border-radius:20px;
+
+    padding:24px;
+
+    margin-top:22px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.30);
+
+    transition:all .3s ease;
+
+}
+
+.goal-card:hover{
+
+    transform:translateY(-5px);
+
+    border-color:#22c55e;
+
 }
 
 .goal-header{
@@ -819,4 +851,362 @@ body{
     background:linear-gradient(90deg,#22c55e,#3b82f6);
     border-radius:999px;
     transition:width .35s ease;
+}
+
+.hero-section{
+
+    background:linear-gradient(
+        135deg,
+        rgba(99,102,241,.20),
+        rgba(34,197,94,.15)
+    );
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:24px;
+
+    padding:32px;
+
+    margin-bottom:30px;
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:0 15px 40px rgba(0,0,0,.30);
+
+}
+
+.hero-section h1{
+
+    margin:0;
+
+    font-size:34px;
+
+    font-weight:700;
+
+}
+
+.hero-section p{
+
+    margin:12px 0;
+
+    font-size:18px;
+
+    color:#cbd5e1;
+
+}
+
+.hero-section span{
+
+    color:#818cf8;
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+.dashboard-card h3{
+    color:#94a3b8;
+    font-size:16px;
+    margin-bottom:10px;
+}
+
+.dashboard-card h1{
+    font-size:42px;
+    margin:0;
+    color:white;
+}
+
+.dashboard-card p{
+    margin-top:12px;
+    color:#22c55e;
+    font-size:14px;
+}
+
+.calendar-widget{
+
+    margin-top:30px;
+
+    background:rgba(43,43,61,.85);
+
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:20px;
+
+    padding:24px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.30);
+
+}
+
+.calendar-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+.calendar-header button{
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#374151;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.calendar-header button:hover{
+
+    background:#4f46e5;
+
+}
+
+.calendar-days{
+
+    display:grid;
+
+    grid-template-columns:repeat(7,1fr);
+
+    text-align:center;
+
+    font-weight:600;
+
+    color:#94a3b8;
+
+    margin-bottom:15px;
+
+}
+
+
+.calendar-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(7,1fr);
+
+    gap:12px;
+
+}
+
+.calendar-date{
+
+    height:80px;
+
+    background:#1f2937;
+
+    border-radius:14px;
+
+    padding:8px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:flex-start;
+
+    align-items:flex-start;
+
+    overflow:hidden;
+
+    transition:.3s;
+
+    cursor:pointer;
+
+}
+
+.calendar-date:hover{
+
+    background:#4f46e5;
+
+    transform:translateY(-2px);
+
+}
+
+.calendar-date.active{
+
+    background:#6366f1;
+
+    color:white;
+
+    font-weight:700;
+
+    box-shadow:0 0 18px rgba(99,102,241,.45);
+
+}
+
+.calendar-event{
+
+    margin-top:25px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+.calendar-event input{
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#1f2937;
+
+    color:white;
+
+    font-size:15px;
+
+}
+
+.calendar-event button{
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#6366f1;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.calendar-event button:hover{
+
+    background:#4f46e5;
+
+}
+
+.day-number{
+    font-weight:700;
+    margin-bottom:6px;
+}
+
+.calendar-date{
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:flex-start;
+    padding:10px;
+}
+
+.calendar-event-text{
+
+    font-size:10px;
+
+    color:#22c55e;
+
+    margin-top:4px;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    width:100%;
+
+}
+
+.calendar-empty{
+
+    height:80px;
+
+}
+
+.calendar-date.today{
+
+    border:2px solid #22c55e;
+
+    box-shadow:0 0 15px rgba(34,197,94,.35);
+
+}
+
+.selected-events{
+
+    margin-top:30px;
+
+    background:#1f2937;
+
+    border-radius:18px;
+
+    padding:20px;
+
+}
+
+.selected-events h3{
+
+    margin-bottom:18px;
+
+}
+
+.event-item{
+
+    background:#2b2b3d;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    margin-top:10px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.delete-event-btn{
+
+    background:#ef4444;
+
+    color:white;
+
+    border:none;
+
+    border-radius:10px;
+
+    padding:8px 12px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.delete-event-btn:hover{
+
+    background:#dc2626;
+
+    transform:scale(1.05);
+
 }

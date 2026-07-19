@@ -6,6 +6,7 @@ import RecentActivity from "../components/RecentActivity";
 import TaskManager from "../components/TaskManager";
 import Notes from "../components/Notes";
 import Goals from "../components/Goals";
+import Calendar from "../components/Calendar";
 
 
 
@@ -34,26 +35,35 @@ function Dashboard({
                 />
                 
 
-                <h2>Welcome back, Sujal 👋</h2>
+                <div className="hero-section">
 
-                <p>Let's build the future with Nexora.</p>
+    <h1>👋 Welcome back, Sujal</h1>
+
+    <p>Your AI-powered life operating system.</p>
+
+    <span>🚀 Build • Learn • Organize • Grow</span>
+
+</div>
 
                 <div className="cards">
 
-                    <DashboardCard
-                        title="Tasks"
-                        value="12"
-                    />
+                  <DashboardCard
+                    title="📋 Tasks"
+                    value="12"
+                    subtitle="+2 completed today"
+                />
 
-                    <DashboardCard
-                        title="Goals"
-                        value="4"
-                    />
+                <DashboardCard
+                    title="🎯 Goals"
+                    value="4"
+                    subtitle="2 completed"
+                />
 
-                    <DashboardCard
-                        title="Notes"
-                        value="18"
-                    />
+            <DashboardCard
+                title="📝 Notes"
+                value="18"
+                subtitle="Last updated today"
+            />
 
                 </div>
 
@@ -62,6 +72,8 @@ function Dashboard({
                 <RecentActivity />
 
                 <Goals />
+
+                <Calendar />
 
                
 
