@@ -5,9 +5,12 @@ import EventCard from "./EventCard";
 function Calendar() {
 
     const [selectedDay, setSelectedDay] = useState(null);
+
     const [eventTitle, setEventTitle] = useState("");
 
-     const [eventTime, setEventTime] = useState("");
+    const [eventTime, setEventTime] = useState("");
+
+    const [editingEvent, setEditingEvent] = useState(null);
 
     const [events, setEvents] = useState(() => {
         const savedEvents = localStorage.getItem("nexoraCalendarEvents");
@@ -61,29 +64,52 @@ function Calendar() {
 
     const saveEvent = () => {
 
-        if (!selectedDay) return;
+    if (!selectedDay) return;
 
-        if (eventTitle.trim() === "") return;
+    if (eventTitle.trim() === "") return;
 
-        const selectedDate =
-            `${year}-${String(currentDate.getMonth() + 1).padStart(2, "0")}-${String(selectedDay).padStart(2, "0")}`;
+    const selectedDate =
+        `${year}-${String(currentDate.getMonth() + 1).padStart(2, "0")}-${String(selectedDay).padStart(2, "0")}`;
+
+    if (editingEvent) {
+
+        setEvents(
+
+            events.map(event =>
+
+                event === editingEvent
+                    ? {
+                        ...event,
+                        title: eventTitle,
+                        time: eventTime
+                    }
+                    : event
+
+            )
+
+        );
+
+        setEditingEvent(null);
+
+    } else {
 
         setEvents([
             ...events,
             {
-    date: selectedDate,
-    title: eventTitle,
-    time: eventTime
-}
+                date: selectedDate,
+                title: eventTitle,
+                time: eventTime
+            }
         ]);
 
-        setEventTitle("");
+    }
 
-        setEventTime("");
+    setEventTitle("");
+    setEventTime("");
 
-    };
+};
 
-    const deleteEvent = (date, title) => {
+const deleteEvent = (date, title) => {
 
     setEvents(
         events.filter(
@@ -91,6 +117,16 @@ function Calendar() {
                 !(event.date === date && event.title === title)
         )
     );
+
+};
+
+  const editEvent = (event) => {
+
+    setEditingEvent(event);
+
+    setEventTitle(event.title);
+
+    setEventTime(event.time);
 
 };
 
@@ -200,11 +236,12 @@ function Calendar() {
                         })
                         .map((event, index) => (
 
-    <EventCard
-        key={index}
-        event={event}
-        onDelete={deleteEvent}
-    />
+                    <EventCard
+                    key={index}
+                    event={event}
+                    onDelete={deleteEvent}
+                    onEdit={editEvent}
+                />
 
 ))
 
@@ -239,7 +276,11 @@ function Calendar() {
                     />
 
                     <button onClick={saveEvent}>
-                        Save Event
+
+                        {editingEvent
+                            ? "Update Event"
+                            : "Save Event"}
+
                     </button>
 
                 </div>

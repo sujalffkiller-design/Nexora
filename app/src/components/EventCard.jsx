@@ -1,4 +1,4 @@
-function EventCard({ event, onDelete }) {
+function EventCard({ event, onDelete, onEdit }) {
 
     return (
 
@@ -6,22 +6,29 @@ function EventCard({ event, onDelete }) {
 
             <div className="event-details">
 
-                <h4>
-                    📌 {event.title}
-                </h4>
+                <h4>📌 {event.title}</h4>
 
-                <p>
-                    🕒 {event.time || "No Time"}
-                </p>
+                <p>🕒 {event.time || "No Time"}</p>
 
             </div>
 
-            <button
-                className="delete-event-btn"
-                onClick={() => onDelete(event.date, event.title)}
-            >
-                🗑
-            </button>
+            <div className="event-actions">
+
+                <button
+                    className="edit-event-btn"
+                    onClick={() => onEdit(event)}
+                >
+                    ✏ Edit
+                </button>
+
+                <button
+                    className="delete-event-btn"
+                    onClick={() => onDelete(event.date, event.title)}
+                >
+                    🗑 Delete
+                </button>
+
+            </div>
 
         </div>
 
