@@ -1,14 +1,42 @@
 function EventCard({ event, onDelete, onEdit }) {
 
+    console.log("EventCard received:", event);
+
+   const categoryIcons = {
+    Study: "📚",
+    Work: "💻",
+    Meeting: "💼",
+    Personal: "🏠",
+    Fitness: "🏋️"
+};
+
+const categoryColors = {
+    Study: "#3b82f6",
+    Work: "#f59e0b",
+    Meeting: "#8b5cf6",
+    Personal: "#10b981",
+    Fitness: "#ef4444"
+};
+
+
     return (
 
         <div className="event-item">
 
             <div className="event-details">
 
-                <h4>📌 {event.title}</h4>
+                <h4 className="event-title">
+                    {categoryIcons[event.category || "Study"]} {event.title}
+                </h4>
 
-                <p>🕒 {event.time || "No Time"}</p>
+                <small
+                    className="event-category"
+                    style={{
+                        background: categoryColors[event.category || "Study"]
+                    }}
+                >
+                    {event.category || "Study"}
+                </small>
 
             </div>
 

@@ -10,6 +10,8 @@ function Calendar() {
 
     const [eventTime, setEventTime] = useState("");
 
+    const [eventCategory, setEventCategory] = useState("Study");
+
     const [editingEvent, setEditingEvent] = useState(null);
 
     const [events, setEvents] = useState(() => {
@@ -81,7 +83,8 @@ function Calendar() {
                     ? {
                         ...event,
                         title: eventTitle,
-                        time: eventTime
+                        time: eventTime,
+                        category: eventCategory
                     }
                     : event
 
@@ -98,7 +101,8 @@ function Calendar() {
             {
                 date: selectedDate,
                 title: eventTitle,
-                time: eventTime
+                time: eventTime,
+                category: eventCategory
             }
         ]);
 
@@ -106,6 +110,7 @@ function Calendar() {
 
     setEventTitle("");
     setEventTime("");
+    setEventCategory("Study");
 
 };
 
@@ -120,13 +125,15 @@ const deleteEvent = (date, title) => {
 
 };
 
-  const editEvent = (event) => {
+ const editEvent = (event) => {
 
     setEditingEvent(event);
 
     setEventTitle(event.title);
 
     setEventTime(event.time);
+
+    setEventCategory(event.category);
 
 };
 
@@ -274,6 +281,25 @@ const deleteEvent = (date, title) => {
                             setEventTime(e.target.value)
                         }
                     />
+
+                    <select
+                        value={eventCategory}
+                        onChange={(e) =>
+                            setEventCategory(e.target.value)
+                        }
+                    >
+
+                        <option>Study</option>
+
+                        <option>Work</option>
+
+                        <option>Meeting</option>
+
+                        <option>Personal</option>
+
+                        <option>Fitness</option>
+
+                    </select>
 
                     <button onClick={saveEvent}>
 
