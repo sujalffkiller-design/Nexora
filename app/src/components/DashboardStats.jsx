@@ -3,7 +3,13 @@ function DashboardStats({
     notes = 0,
     tasks = 0,
     goals = 0,
-    events = 0
+    events = 0,
+
+    completedTasks = 0,
+    pendingTasks = 0,
+    highPriorityTasks = 0,
+    overdueTasks = 0,
+    completionRate = 0
 
 }) {
 
@@ -40,6 +46,45 @@ function DashboardStats({
                 <h3>📅 Events Today</h3>
 
                 <span>{events}</span>
+
+            </div>
+                        <div className="stat-card">
+
+                <h3>✅ Completed</h3>
+
+                <span>{completedTasks}</span>
+
+            </div>
+
+            <div className="stat-card">
+
+                <h3>⏳ Pending</h3>
+
+                <span>{pendingTasks}</span>
+
+            </div>
+
+            <div className="stat-card">
+
+                <h3>🔴 High Priority</h3>
+
+                <span>{highPriorityTasks}</span>
+
+            </div>
+
+            <div className="stat-card">
+
+                <h3>🚨 Overdue</h3>
+
+                <span>{overdueTasks}</span>
+
+            </div>
+
+            <div className="stat-card">
+
+                <h3>📈 Completion</h3>
+
+                <span>{completionRate}%</span>
 
             </div>
 

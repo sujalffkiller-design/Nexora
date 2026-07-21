@@ -29,6 +29,35 @@ const goals =
 const events =
     JSON.parse(localStorage.getItem("nexoraCalendarEvents")) || [];
 
+const tasks =
+    JSON.parse(localStorage.getItem("nexoraTasks")) || [];
+
+const completedTasks =
+    tasks.filter(task => task.completed).length;
+
+const pendingTasks =
+    tasks.filter(task => !task.completed).length;
+
+const highPriorityTasks =
+    tasks.filter(task => task.priority === "High").length;
+
+const overdueTasks =
+    tasks.filter(task => {
+
+        if (!task.dueDate || task.completed) return false;
+
+        const today =
+            new Date().toISOString().split("T")[0];
+
+        return task.dueDate < today;
+
+    }).length;
+
+const completionRate =
+    tasks.length === 0
+        ? 0
+        : Math.round((completedTasks / tasks.length) * 100);
+
 
 
     return (
@@ -60,20 +89,26 @@ const events =
 
                 {/* Dashboard Stats */}
 
-                <DashboardStats
-    notes={notes.length}
-    tasks={0}
-    goals={goals.length}
-    events={events.length}
-/>
+              <DashboardStats
+                notes={notes.length}
+                tasks={tasks.length}
+                goals={goals.length}
+                events={events.length}
+
+                completedTasks={completedTasks}
+                pendingTasks={pendingTasks}
+                highPriorityTasks={highPriorityTasks}
+                overdueTasks={overdueTasks}
+                completionRate={completionRate}
+            />
                 {/* Quick Cards */}
 
                 <div className="cards">
 
                     <DashboardCard
                         title="📋 Tasks"
-                        value="12"
-                        subtitle="+2 completed today"
+                        value={tasks.length}
+                        subtitle={`${pendingTasks} Pending`}
                     />
 
                     <DashboardCard

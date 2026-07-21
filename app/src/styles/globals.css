@@ -1329,3 +1329,149 @@ body{
     color:#818cf8;
 
 }
+
+.task-info{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.priority-badge{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 4px 10px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    color: white;
+
+    width: fit-content;
+
+    min-width: 70px;
+}
+
+.priority-badge.high{
+
+    background:#ef4444;
+
+}
+
+.priority-badge.medium{
+
+    background:#f59e0b;
+
+}
+
+.priority-badge.low{
+
+    background:#10b981;
+
+}
+
+.due-date{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    margin-left:12px;
+
+    white-space:nowrap;
+
+    color:#60a5fa;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.task-date-section{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:4px;
+
+}
+
+.due-status{
+
+    font-size:12px;
+
+    font-weight:700;
+
+}
+
+.due-status.overdue{
+
+    color:#ef4444;
+
+}
+
+.due-status.today{
+
+    color:#22c55e;
+
+}
+
+.due-status.tomorrow{
+
+    color:#f59e0b;
+
+}
+
+.due-status.future{
+
+    color:#3b82f6;
+
+}
+
+.task-filters{
+
+    display:flex;
+
+    gap:10px;
+
+    margin:20px 0;
+
+}
+
+.task-filters button{
+
+    padding:8px 16px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#1f2937;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.task-filters button:hover{
+
+    background:#3b82f6;
+
+}
+
+.task-filters button.active-filter{
+    background:#3b82f6;
+    color:white;
+    border:none;
+}
