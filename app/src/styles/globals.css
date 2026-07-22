@@ -1475,3 +1475,18 @@ body{
     color:white;
     border:none;
 }
+
+.productivity-chart{
+    background:#111827;
+    border:1px solid #1f2937;
+    border-radius:18px;
+    padding:24px;
+    margin:25px 0;
+    box-shadow:0 8px 25px rgba(0,0,0,.35);
+}
+
+.productivity-chart h2{
+    color:#fff;
+    margin-bottom:20px;
+    font-size:22px;
+}

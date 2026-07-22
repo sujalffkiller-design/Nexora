@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 
 import EventCard from "./EventCard";
 
+import toast from "react-hot-toast";
+
 function Calendar() {
 
     const [selectedDay, setSelectedDay] = useState(null);
@@ -94,6 +96,8 @@ function Calendar() {
 
         setEditingEvent(null);
 
+        toast.success("✏️ Event updated!");
+
     } else {
 
         setEvents([
@@ -103,8 +107,11 @@ function Calendar() {
                 title: eventTitle,
                 time: eventTime,
                 category: eventCategory
+                
             }
+            
         ]);
+        toast.success("📅 Event saved!");
 
     }
 
@@ -122,6 +129,7 @@ const deleteEvent = (date, title) => {
                 !(event.date === date && event.title === title)
         )
     );
+    toast.success("🗑️ Event deleted!");
 
 };
 

@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+import toast from "react-hot-toast";
+
 function Notes() {
     const [notes, setNotes] = useState(() => {
         const savedNotes = localStorage.getItem("nexoraNotes");
@@ -53,6 +55,12 @@ function Notes() {
             ]);
         }
 
+        toast.success(
+            editingId !== null
+                ? "📝 Note updated!"
+                : "📝 Note saved!"
+        );
+
         setTitle("");
         setContent("");
     };
@@ -61,7 +69,13 @@ function Notes() {
         if (id === 1) return;
 
         setNotes(notes.filter((note) => note.id !== id));
+
+        setNotes(notes.filter((note) => note.id !== id));
+
     };
+
+    toast.success("🗑️ Note deleted!");
+
 
     const editNote = (note) => {
         setTitle(note.title);

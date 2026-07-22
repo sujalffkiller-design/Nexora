@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import GoalForm from "./GoalForm";
 import GoalCard from "./GoalCard";
+import toast from "react-hot-toast";
 
 function Goals() {
 
@@ -35,6 +36,8 @@ function Goals() {
         setGoals([newGoal, ...goals]);
 
     };
+    
+    toast.success("🎯 Goal created!");
 
     const addStep = (goalId, stepText) => {
 
@@ -61,6 +64,7 @@ function Goals() {
         )
 
     );
+    toast.success("➕ Step added!");
 
 };
 
@@ -89,6 +93,8 @@ const toggleStep = (goalId, stepId) => {
         )
 
     );
+
+    toast.success("🏆 Goal progress updated!");
 
 };
 

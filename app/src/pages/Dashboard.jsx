@@ -10,6 +10,7 @@ import TaskManager from "../components/TaskManager";
 import Notes from "../components/Notes";
 import Goals from "../components/Goals";
 import Calendar from "../components/Calendar";
+import ProductivityChart from "../components/ProductivityChart";
 
 function Dashboard({
 
@@ -100,6 +101,13 @@ const completionRate =
                 highPriorityTasks={highPriorityTasks}
                 overdueTasks={overdueTasks}
                 completionRate={completionRate}
+            />
+
+            <ProductivityChart
+                notes={notes.length}
+                tasks={tasks.length}
+                goals={goals.length}
+                events={events.length}
             />
                 {/* Quick Cards */}
 
